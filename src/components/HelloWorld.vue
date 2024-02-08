@@ -1,10 +1,14 @@
-<script setup>
-defineProps({
-  msg: {
-    type: String,
-    required: true
+<script>
+export default {
+  props:{
+    msg: String,
+  },
+  data(){
+    return{
+      count:0
+    }
   }
-})
+}
 </script>
 
 <template>

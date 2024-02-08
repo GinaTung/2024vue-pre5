@@ -1,15 +1,39 @@
 <template>
   <div class="about">
     <h1>This is an about page</h1>
+    {{ text }}
+    {{ data }}
   </div>
 </template>
+
+<script>
+export default{
+  data(){
+    return{
+      text:"我叫yuling",
+      data:{}
+    }
+  },
+  mounted(){
+    console.log(import.meta.env.VITE_PATH);
+    console.log(import.meta.env.VITE_TEXT);
+    const url = import.meta.env.VITE_PATH;
+    this.$http.get(url).then((response) => {
+        console.log(response.data)
+        this.data = response.data;
+      })
+  }
+}
+</script>
 
 <style>
 @media (min-width: 1024px) {
   .about {
-    min-height: 100vh;
+    /* min-height: 100vh; */
     display: flex;
-    align-items: center;
+    /* align-items: center; */
+    flex-direction: column;
+    justify-content: center;
   }
 }
 </style>
